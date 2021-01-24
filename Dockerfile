@@ -11,13 +11,15 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update -qq && apt-get install -y build-essential nodejs yarn 
 
-COPY Gemfile /app/Gemfile
-COPY Gemfile.lock /app/Gemfile.lock
+COPY Gemfile Gemfile
+COPY Gemfile.lock Gemfile.lock
 RUN gem install bundler:2.1.4
 RUN bundle install
 
 COPY package.json package.json
 COPY yarn.lock yarn.lock
-RUN yarn install
+RUN yarn upgrade webpack@^4.0.0 \
+    yarn install
 
-COPY . /app
+
+COPY . .
