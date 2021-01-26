@@ -58,3 +58,4 @@ gem 'jquery-rails'
 gem 'font-awesome-sass', '< 5.0.13'
 
 gem 'devise'
+gem 'public_uid'
