@@ -1,3 +1,29 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  devise_for :players,
+  controllers: {
+      sessions: 'devise/players/sessions',
+      passwords: 'devise/players/passwords',
+      registrations: 'devise/players/registrations',
+  }
+
+  devise_for :managers,
+  controllers: {
+    sessions: 'devise/managers/sessions',
+    passwords: 'devise/managers/passwords',
+    registrations: 'devise/managers/registrations',
+  }
+
+  root 'home#top'
+
+  namespace :admin do
+    resources :managers
+    resources :players
+  end
+
+  namespace :public do
+    resources :managers
+    resources :players
+  end
+
 end

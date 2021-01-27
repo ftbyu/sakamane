@@ -11,9 +11,14 @@ module App
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration can go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded after loading
-    # the framework and any gems in your application.
+    Rails.application.config.assets.paths << Rails.root.join("app", "assets", "javascripts", "demo")
+    Rails.application.config.assets.paths << Rails.root.join("vendor", "bootstrap", "js")
+    Rails.application.config.assets.paths << Rails.root.join("vendor", "bootstrap", "scss")
+    Rails.application.config.assets.paths << Rails.root.join("vendor", "chart.js")
+    Rails.application.config.assets.paths << Rails.root.join("vendor", "datatables")
+    Rails.application.config.assets.paths << Rails.root.join("vendor", "fontawesome-free")
+    Rails.application.config.assets.paths << Rails.root.join("vendor", "jquery")
+    Rails.application.config.assets.paths << Rails.root.join("vendor", "jquery-easing")
+    Rails.application.config.assets.precompile += %w(*.eot *.woff *.woff2 *.ttf *.svg *.otf *.png *.jpg *.gif chart-pie-demo.js chart-area-demo.js application.js sb-admin-2.js jquery.min.js bootstrap.bundle.min.js jquery.easing.min.js sb-admin-2.min.js Chart.min.js )
   end
 end
