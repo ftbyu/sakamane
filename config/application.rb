@@ -13,6 +13,7 @@ module App
 
     Rails.application.config.assets.paths << Rails.root.join("app", "assets", "javascripts", "demo")
     Rails.application.config.assets.paths << Rails.root.join("vendor", "bootstrap", "js")
+    Rails.application.config.assets.paths << Rails.root.join("vendor", "bootstrap", "scss")
     Rails.application.config.assets.paths << Rails.root.join("vendor", "chart.js")
     Rails.application.config.assets.paths << Rails.root.join("vendor", "datatables")
     Rails.application.config.assets.paths << Rails.root.join("vendor", "fontawesome-free")
