@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_26_124819) do
+ActiveRecord::Schema.define(version: 2021_01_28_080221) do
+
+  create_table "achivements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "player_id", comment: "外部キー　選手"
+    t.integer "game_id", comment: "外部キー　試合"
+    t.string "comment", comment: "コメント"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "games", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "manager_id", comment: "外部キー　マネージャー"
+    t.integer "location_id", comment: "外部キー　場所"
+    t.integer "type", comment: "試合タイプ"
+    t.integer "enemy_score", comment: "敵スコア"
+    t.string "enemy_image_id", comment: "敵画像"
+    t.string "video_link", comment: "動画リンク"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "managers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "public_uid", comment: "チームコード"

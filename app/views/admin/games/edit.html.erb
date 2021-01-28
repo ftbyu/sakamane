@@ -1,24 +1,24 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <h1>Editing manager</h1>
-      <% if @manager.errors.any? %>
-        <%= @manager.errors.count %>件のerrorが発生しました
-        <% @manager.errors.full_messages.each do |message| %>
+      <h1>Editing game</h1>
+      <% if @game.errors.any? %>
+        <%= @game.errors.count %>件のerrorが発生しました
+        <% @game.errors.full_messages.each do |message| %>
           <%= message %>
         <% end %>
       <% end %>
-      <%= form_for(@manager,url: admin_manager_path(@manager),) do |f| %>
+      <%= form_for(@game,url: admin_game_path(@game),) do |f| %>
         <div class="field row">
-          <h4>email</h4>
-          <%= f.text_field :email, class: "col-xs-12 manager_email"%>
+          <h4>敵スコア</h4>
+          <%= f.number_field :enemy_score, class: "col-xs-12 game_email"%>
         </div>
         <div class="actions row">
           <%= f.submit "Update" ,class: "btn btn-primary col-xs-12" %>
           <br>
         </div>
       <% end %>
-      　<%= link_to 'Show', admin_manager_path(current_manager) %>
+      　<%= link_to 'Show', admin_game_path(@game) %>
       　<%= link_to 'Back', root_path  %>
       <div class="col-md-3"></div>
     </div>
