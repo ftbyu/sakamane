@@ -10,7 +10,8 @@ bundle:
 stop:
 	docker-compose stop
 restart:
-	docker-compose restart
+	docker-compose down
+	docker-compose up 
 	docker-compose exec web bundle exec rake db:create
 down:
 	docker-compose down
@@ -23,4 +24,4 @@ migrate:
 create:
 	docker-compose exec web bundle exec rake db:create
 seed:
-	docker-compose exec app php artisan db:seed
+	docker-compose exec web bundle exec rake db:seed

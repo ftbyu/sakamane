@@ -2,6 +2,7 @@ class Admin::PlayersController < ApplicationController
 
   def index
     @players = Player.all
+    @manager = current_manager
   end
 
   def show
@@ -16,7 +17,7 @@ class Admin::PlayersController < ApplicationController
   	player = Player.find(params[:id])
     if player.update(player_params)
       flash[:notice] = "successfully"
-  		redirect_to public_player_path(player)
+  		redirect_to admin_managers_player_path(player)
     else
       flash[:notice] = "error"
       render :edit
@@ -25,7 +26,7 @@ class Admin::PlayersController < ApplicationController
 	
 	private
 	def player_params
-    params.require(:player).permit(:kana_name, :last_name ,:email)
+    params.require(:player).permit(:first_name)
   end
   
 end
