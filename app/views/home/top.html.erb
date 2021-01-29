@@ -101,8 +101,8 @@
       <li><%= link_to "ログアウト", destroy_player_session_path, method: :delete %></li>
     <% elsif manager_signed_in? %>
       <h1 class="h3 mb-0 text-gray-800">Manager</h1>
-      <li><%= link_to "マイページ", admin_manager_path(current_manager) %></li>
-      <li><%= link_to "試合一覧" %></li>
+      <li><%= link_to "マイページ", admin_managers_path %></li>
+      <li><%= link_to "試合一覧", admin_managers_games_path %></li>
       <li><%= link_to "試合入力" %></li>
       <li><%= link_to "ログアウト", destroy_manager_session_path, method: :delete %></li>
     <% else %>

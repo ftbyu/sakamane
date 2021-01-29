@@ -1,7 +1,7 @@
 <div class="container">
     <h3>試合追加・一覧画面</h3>
     <br>
-    <%= form_for @game_new ,url: admin_games_path do |f| %>
+    <%= form_for @game_new ,url: admin_managers_games_path do |f| %>
         <div class="field row">
         <div class="col-md-6">
             <%= f.label :敵スコア %>
@@ -28,7 +28,7 @@
                             <%= game.enemy_score%>
                         </td>
                         <td>
-                            <%= link_to "edit", edit_admin_game_path(game.id) ,class:"btn-sm btn-success" %>
+                            <%= link_to "edit", edit_admin_managers_game_path(game.id) ,class:"btn-sm btn-success" %>
                         </td>
                     </tr>
                 <% end %>

@@ -17,9 +17,10 @@ Rails.application.routes.draw do
   root 'home#top'
 
   namespace :admin do
-    resources :managers
-    resources :players
-    resources :games
+    resource :managers do
+      resources :players
+      resources :games
+    end
   end
 
   namespace :public do
