@@ -17,6 +17,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th></th>
                     <th>敵スコア</th>
                     <th></th>
                 </tr>
@@ -24,12 +25,12 @@
             <tbody>
                 <% @games.each do |game| %>
                     <tr>
-                        <td>
-                            <%= game.enemy_score%>
-                        </td>
-                        <td>
-                            <%= link_to "edit", edit_admin_managers_game_path(game.id) ,class:"btn-sm btn-success" %>
-                        </td>
+                      <td><%= game.enemy_image_id %></td>
+                      <td><%= game.enemy_score %></td>
+                      <td class="text-right">
+                        <%= link_to "show", admin_managers_game_path(game.id) ,class:"btn-sm btn-primary" %>
+                        <%= link_to "edit", edit_admin_managers_game_path(game.id) ,class:"btn-sm btn-success" %>
+                      </td>
                     </tr>
                 <% end %>
             </tbody> 
