@@ -1,5 +1,5 @@
 class Analiysis < ApplicationRecord
 
-  belongs_to :achivement, optional: true
+  has_many :results
   
 end

@@ -11,7 +11,7 @@ stop:
 	docker-compose stop
 restart:
 	docker-compose down
-	docker-compose up 
+	docker-compose up
 	docker-compose exec web bundle exec rake db:create
 down:
 	docker-compose down

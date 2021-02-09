@@ -10,8 +10,12 @@
       <% end %>
       <%= form_for(@game,url: admin_managers_game_path(@game),) do |f| %>
         <div class="field row">
-          <h4>敵スコア</h4>
-          <%= f.number_field :enemy_score, class: "col-xs-12 game_email"%>
+          <%= f.label :敵スコア , class: 'col-md-3' %>
+          <%= f.number_field :enemy_score%>
+        </div>
+        <div class="field row">
+          <%= f.label :敵チーム名 , class: 'col-md-3' %>
+          <%= f.text_field :enemy_name %>
         </div>
         <div class="actions row">
           <%= f.submit "Update" ,class: "btn btn-primary col-xs-12" %>

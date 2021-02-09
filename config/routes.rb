@@ -19,7 +19,16 @@ Rails.application.routes.draw do
   namespace :admin do
     resource :managers do
       resources :players
-      resources :games
+      resources :games do
+        resources :results do
+          collection do
+            patch :update_all
+          end
+        end
+        member do
+          get :score
+        end
+      end
     end
   end
 
