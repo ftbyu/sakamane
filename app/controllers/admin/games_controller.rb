@@ -13,7 +13,7 @@ class Admin::GamesController < ApplicationController
   end
 
   def new
-    @game_new = Game.new
+    @game = Game.new
   end
 
   def score
@@ -27,20 +27,23 @@ class Admin::GamesController < ApplicationController
 
     #試合を作成
     game = Game.new(game_params)
-    game.save
+    game.manager_id = current_manager.id
+    game.enemy_name = params[:enemy_name]
+    game.type_id = params[:type_id]
+    game.save!
 
     current_manager.players.each do |player|
       #個人成績を作成
       achivement = game.achivements.new
       achivement.player_id = player.id
-      achivement.save
+      achivement.save!
 
       #個人成績に紐ずく分析記録を作成
       analiyses.each do |analiysis|
         result = analiysis.results.new
         result.achivement_id = achivement.id
         result.amount = 0
-        result.save
+        result.save!
       end
     end
 

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resource :managers do
       resources :players
       resources :games do
+        resources :achivements
         resources :results do
           collection do
             patch :update_all
