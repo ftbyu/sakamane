@@ -1,0 +1,17 @@
+<%= form_with model: @game ,url: admin_managers_games_path, method: :post,local: true do |f| %>
+    <div class="col-md-6">
+		  <div class="field row">
+				<%= f.label :敵チーム名 , class: 'col-md-3' %>
+				<%= f.text_field :enemy_name, class: 'col-m' %>
+      </div>
+		  <div class="field row">
+				<%= f.label :場所 , class: 'col-md-3' %>
+				<%= f.collection_select :location_id, Location.all, :id, :name , include_blank: "-- 選択して下さい --" , class: 'col-md-9' %>
+      </div>
+			<div class="field row">
+				<%= f.label :試合タイプ , class: 'col-md-3' %>
+        <%= f.collection_select :type_id, Type.all, :id, :name , include_blank: "-- 選択して下さい --" , class: 'col-md-9' %>
+			</div>
+      <%= f.submit '試合記録画面へ進む', class: "btn bg-primary" %>
+    </div>
+<% end %>

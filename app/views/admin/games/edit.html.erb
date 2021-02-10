@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1>Editing game</h1>
+      <% if @game.errors.any? %>
+        <%= @game.errors.count %>件のerrorが発生しました
+        <% @game.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+      <% end %>
+      <%= form_for(@game,url: admin_managers_game_path(@game),) do |f| %>
+        <div class="field row">
+          <%= f.label :敵スコア , class: 'col-md-3' %>
+          <%= f.number_field :enemy_score%>
+        </div>
+        <div class="field row">
+          <%= f.label :敵チーム名 , class: 'col-md-3' %>
+          <%= f.text_field :enemy_name %>
+        </div>
+        <div class="actions row">
+          <%= f.submit "Update" ,class: "btn btn-primary col-xs-12" %>
+          <br>
+        </div>
+      <% end %>
+      　<%= link_to 'Show', admin_managers_game_path(@game) %>
+      　<%= link_to 'Back', root_path  %>
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+</div>

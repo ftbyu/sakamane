@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1>Editing player</h1>
+      <% if @player.errors.any? %>
+        <%= @player.errors.count %>件のerrorが発生しました
+        <% @player.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+      <% end %>
+      <%= form_for(@player,url: admin_managers_player_path(@player),) do |f| %>
+        <div class="row">
+          <div class="field">
+            <%= f.label :last_name %><br>
+            <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+          </div>
+          <div class="col-md-1"></div>
+          <div class="field">
+            <%= f.label :first_name %><br>
+            <%= f.text_field :first_name, autofocus: true, autocomplete: "last_name" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <%= f.label :kana_last_name %><br>
+            <%= f.text_field :kana_last_name, autofocus: true, autocomplete: "last_name" %>
+          </div>
+          <div class="col-md-1"></div>
+          <div class="field">
+            <%= f.label :kana_first_name %><br>
+            <%= f.text_field :kana_first_name, autofocus: true, autocomplete: "last_name" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <%= f.label :height %><br>
+            <%= f.number_field :height, autofocus: true, autocomplete: "last_name" %>
+          </div>
+          <div class="col-md-1"></div>
+          <div class="field">
+            <%= f.label :weight %><br>
+            <%= f.number_field :weight, autofocus: true, autocomplete: "last_name" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <%= f.label :grade %><br>
+            <%= f.number_field :grade, autofocus: true, autocomplete: "last_name" %>
+          </div>
+          <div class="col-md-1"></div>
+          <div class="field">
+            <%= f.label :email %><br>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+        </div>
+        <br>
+        <div class="actions row">
+          <%= f.submit "Update" ,class: "btn btn-success" %>
+        　<%= link_to 'Show', admin_managers_player_path(@player),class: "btn btn-outline-primary" %>
+        　<%= link_to 'Back', admin_managers_players_path ,class: "btn btn-outline-primary" %>
+        </div>
+      <% end %>
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+</div>

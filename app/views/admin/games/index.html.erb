@@ -1,0 +1,29 @@
+<div class="container">
+    <h3>試合追加・一覧画面</h3>
+    <br>
+    <br>
+    <br>
+    <div class="col-xs-6">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>敵チーム名</th>
+                    <th>スコア</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @games.each do |game| %>
+                    <tr>
+                      <td><%= game.enemy_name %></td>
+                      <td><%= "#{score(game)} - #{game.enemy_score}" %></td>
+                      <td class="text-right">
+                        <%= link_to "show", admin_managers_game_path(game.id) ,class:"btn-sm btn-primary" %>
+                        <%= link_to "edit", edit_admin_managers_game_path(game.id) ,class:"btn-sm btn-success" %>
+                      </td>
+                    </tr>
+                <% end %>
+            </tbody> 
+        </table>
+    </div>
+</div>

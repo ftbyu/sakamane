@@ -1,15 +1,15 @@
 class Admin::ManagersController < ApplicationController
     
 	def show
-		@manager = Manager.find(params[:id])
+		@manager = current_manager
 	end
 
 	def edit
-    @manager = Manager.find(params[:id])
+    @manager = current_manager
   end
 
   def update
-  	manager = Manager.find(params[:id])
+  	manager = current_manager
     if manager.update(manager_params)
       flash[:notice] = "successfully"
   		redirect_to admin_manager_path(manager)

@@ -5,5 +5,6 @@ class Manager < ApplicationRecord
   generate_public_uid generator: PublicUid::Generators::NumberSecureRandom.new
 
   has_many :players
+  has_many :games
 
 end

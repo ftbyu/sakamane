@@ -1,0 +1,31 @@
+<h3>選手一覧画面</h3>
+<br>
+<br>
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>画像</th>
+					<th>学年</th>
+					<th>名前</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @players.each do |player| %>
+					<tr>
+						<td></td>
+						<td><%= player.grade %></td>
+						<td><%= player.last_name + player.first_name %></td>
+						<td class="text-right">
+							<%= link_to "show", admin_managers_player_path(player.id) ,class:"btn-sm btn-primary" %>
+							<%= link_to "edit", edit_admin_managers_player_path(player.id) ,class:"btn-sm btn-success" %>
+						</td>
+					</tr>
+				<% end %>
+			</tbody> 
+		</table>
+	</div>
+</div>
