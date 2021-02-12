@@ -1,8 +1,13 @@
 class Admin::AchivementsController < ApplicationController
 
+  def show
+    @achivement = Achivement.find_by(game_id: params[:game_id],player_id: params[:player_id])
+  end
+
   def edit
     @achivement = Achivement.includes(:results).find(params[:id])
   end
+
   def update
     achivement = Achivement.find(params[:id])
     ActiveRecord::Base.transaction do

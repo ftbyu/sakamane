@@ -5,13 +5,13 @@ build:
 bundle:
 	docker-compose run web bundle update
 	docker-compose build
-	docker-compose up
+	docker-compose up -d
 	docker-compose exec web bundle exec rake db:create
 stop:
 	docker-compose stop
 restart:
 	docker-compose down
-	docker-compose up
+	docker-compose up -d
 	docker-compose exec web bundle exec rake db:create
 down:
 	docker-compose down

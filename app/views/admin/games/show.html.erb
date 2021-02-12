@@ -32,3 +32,11 @@
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-6">
+    <h4>出場選手<h4>
+    <% @players.each do |player| %>
+      <%= link_to player.first_name, admin_managers_game_player_achivements_path(@game,player) %>
+    <% end %>
+  </div>
+</div>

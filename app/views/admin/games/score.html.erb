@@ -21,8 +21,8 @@
               </tr>
           </thead>
           <tbody>
-              <% @achivements.each do |achivement| %>
-                <%= form_with model: achivement, url: admin_managers_game_achivement_path(@game.id, achivement.id), method: :patch, local: true do |achivement_form| %>
+              <% @game.achivements.each do |achivement| %>
+                <%= form_with model: achivement, url: admin_managers_game_player_achivements_path(@game.id, achivement.player_id), method: :patch, local: true do |achivement_form| %>
                   <tr>
                       <td>
                           <%=  achivement.player.first_name %>

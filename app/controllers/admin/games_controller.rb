@@ -7,6 +7,11 @@ class Admin::GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @analiyses = Analiysis.all
+    @players = []
+    @game.achivements.each do |achivement|
+      @players << achivement.player
+    end
+
   end
 
   def edit
