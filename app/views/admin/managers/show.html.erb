@@ -1,1 +1,22 @@
-<%= @manager.email %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1>My Team</h1>
+        <div class="field row">
+          <h4>チームコード</h4>
+          <%= @manager.public_uid %>
+        </div>
+        <div class="field row">
+          <h4>チーム名</h4>
+          <%= @manager.team_name %>
+        </div>
+        <div class="field row">
+          <h4>メールアドレス</h4>
+          <%= @manager.email %>
+        </div>
+      　<%= link_to 'Edit', edit_admin_managers_path %>
+      　<%= link_to 'Back', root_path  %>
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+</div>
