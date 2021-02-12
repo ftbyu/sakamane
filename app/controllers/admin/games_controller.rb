@@ -6,9 +6,11 @@ class Admin::GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @analiyses = Analiysis.all
   end
 
   def edit
+    @analiyses = Analiysis.all
     @game = Game.find(params[:id])
   end
 
@@ -17,9 +19,14 @@ class Admin::GamesController < ApplicationController
   end
 
   def score
-    @achivements = Achivement.where(game_id: params[:id])
     @analiyses = Analiysis.all
     @game = Game.find(params[:id])
+  end
+
+  def destroy
+    @game = Game.find(params[:id])
+    @game.destroy
+    redirect_to admin_managers_games_path
   end
 
   def create
@@ -51,8 +58,6 @@ class Admin::GamesController < ApplicationController
     redirect_to score_admin_managers_game_path(game.id)
   end
 
-  def completed
-  end
 
   def update
   	game = Game.find(params[:id])
