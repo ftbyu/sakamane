@@ -9,6 +9,7 @@
                 <tr>
                     <th>対戦相手</th>
                     <th>スコア</th>
+										<th>試合種別</th>
                     <th></th>
                 </tr>
             </thead>
@@ -17,7 +18,8 @@
                     <tr>
                       <td><%= game.enemy_name %></td>
                       <td><%= "#{score(game)} - #{game.enemy_score}" %></td>
-                      <td class="text-right">
+											<td><%= game.type.name %></td>
+											<td class="text-right">
                         <%= link_to "show", admin_managers_game_path(game.id) ,class:"btn-sm btn-primary" %>
                         <%= link_to "edit", edit_admin_managers_game_path(game.id) ,class:"btn-sm btn-success" %>
                         <%= link_to 'Destroy', admin_managers_game_path(game.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_game_#{game.id}"%>

@@ -9,7 +9,7 @@ class Admin::AchivementsController < ApplicationController
   end
 
   def update
-    achivement = Achivement.find(params[:id])
+    achivement = Achivement.find_by(game_id: params[:game_id],player_id: params[:player_id])
     ActiveRecord::Base.transaction do
       achivement.update_attributes!(achivement_params)
       Result.multi_update(results_params)

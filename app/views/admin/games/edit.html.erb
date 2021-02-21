@@ -1,60 +1,64 @@
 
 <div class="row">
-  <div class="col-xs-9">
-      <h3>試合記録画面</h3>
-      <%= "#{score(@game)} - #{@game.enemy_score}" %>
-      <%= form_with model: @game, url: admin_managers_game_path(@game) do |game_form| %>
-        <div class="field row">
-          <%= game_form.label :相手チーム名 , class: 'col-md-3' %>
-          <%= game_form.text_field :enemy_name, class: 'col-md-3' %>
-        </div>
-        <div class="field row">
-          <%= game_form.label :失点数 , class: 'col-md-3' %>
-          <%= game_form.number_field :enemy_score, min:0, step:1, rows:'5', placeholder: "数字を入力", class: 'col-md-3' %>
-        </div>
-        <div class="field row">
-          <%= game_form.label :場所 , class: 'col-md-3' %>
-          <%= game_form.collection_select :location_id, Location.all, :id, :name , include_blank: "-- 選択して下さい --" , class: 'col-md-3' %>
-        </div>
-        <div class="field row">
-          <%= game_form.label :試合タイプ , class: 'col-md-3' %>
-          <%= game_form.collection_select :type_id, Type.all, :id, :name , include_blank: "-- 選択して下さい --" , class: 'col-md-3' %>
-        </div>
-        <%= game_form.submit "変更する" , class: "btn btn-primary"%>
-      <% end %>
-      <br>
-      <table class="table table-bordered">
-          <thead>
-              <tr>
-                  <th>選手名</th>
-                  <% @analiyses.each do |analiysis| %>
-                    <th><%= analiysis.name %></th>
-                  <% end %>
-                  <th></th>
-              </tr>
-          </thead>
-          <tbody>
-              <% @game.achivements.each do |achivement| %>
-                <%= form_with model: achivement, url: admin_managers_game_achivement_path(@game.id, achivement.id), method: :patch, local: true do |achivement_form| %>
-                  <tr>
-                      <td>
-                          <%=  achivement.player.first_name %>
-                      </td>
-                      <% achivement.results.each do |result| %>
-                        <td>
-                          <%= achivement_form.fields_for "results[]", result do |result_form| %>
-                            <%= result_form.number_field :amount, min:0, step:1, rows:'5',placeholder: "数字を入力" %>
-                          <% end %>
-                        </td>
-                      <% end %>
-                      <td>
-                        <%= achivement_form.submit "変更する" , class: "btn  btn-primary"%>
-                      </td>
-                  </tr>
-                <% end %>
-              <% end %>
-          </tbody>
-      </table>
-      <%= link_to "完了", admin_managers_games_path, class:"btn bg-primary" %>
+  <div class="col-md-6">
+    <h2>試合記録編集画面</h2>
+    <h2><%= "#{score(@game)} - #{@game.enemy_score}" %></h2>
+    <%= form_with model: @game, url: admin_managers_game_path(@game) do |game_form| %>
+      <div class="field row">
+        <%= game_form.label :相手チーム名 , class: 'col-md-3' %>
+        <%= game_form.text_field :enemy_name, class: 'col-md-3' %>
+      </div>
+      <div class="field row">
+        <%= game_form.label :失点数 , class: 'col-md-3' %>
+        <%= game_form.number_field :enemy_score, min:0, step:1, rows:'5', placeholder: "数字を入力", class: 'col-md-3' %>
+      </div>
+      <div class="field row">
+        <%= game_form.label :場所 , class: 'col-md-3' %>
+        <%= game_form.collection_select :location_id, Location.all, :id, :name , include_blank: "-- 選択して下さい --" , class: 'col-md-3' %>
+      </div>
+      <div class="field row">
+        <%= game_form.label :試合タイプ , class: 'col-md-3' %>
+        <%= game_form.collection_select :type_id, Type.all, :id, :name , include_blank: "-- 選択して下さい --" , class: 'col-md-3' %>
+      </div>
+      <%= game_form.submit "変更する" , class: "btn btn-primary"%>
+    <% end %>
   </div>
 </div>
+<div class="row">
+  <div class="text-center">
+    <br>
+    <table class="table table-bordered" style="table-layout:fixed;">
+        <thead>
+            <tr>
+                <th>選手名</th>
+                <% @analiyses.each do |analiysis| %>
+                  <th><%= analiysis.name %></th>
+                <% end %>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @game.achivements.each do |achivement| %>
+              <%= form_with model: achivement, url: admin_managers_game_player_achivements_path(@game.id, achivement.player.id), method: :patch, local: true do |achivement_form| %>
+                <tr>
+                    <td>
+                        <%=  achivement.player.first_name %>
+                    </td>
+                    <% achivement.results.each do |result| %>
+                      <td>
+                        <%= achivement_form.fields_for "results[]", result do |result_form| %>
+                          <%= result_form.number_field :amount, min:0, step:1, rows:'5',placeholder: "数字を入力" %>
+                        <% end %>
+                      </td>
+                    <% end %>
+                    <td>
+                      <%= achivement_form.submit "変更する" , class: "btn  btn-primary"%>
+                    </td>
+                </tr>
+              <% end %>
+            <% end %>
+        </tbody>
+    </table>
+    <%= link_to "完了", admin_managers_games_path, class:"btn bg-primary" %>
+  </div>
+</div> 
