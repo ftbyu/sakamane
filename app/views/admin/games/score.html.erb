@@ -1,14 +1,14 @@
-
-<div class="row">
-  <div class="col-xs-9">
-      <h3>試合記録画面</h3>
-      <%= "#{score(@game)} - #{@game.enemy_score}" %>
+<div class="container-fluid">
+	<div class="d-sm-flex align-items-center justify-content-between mb-4">
+			<h1 class="h3 mb-0 text-gray-800">試合記録変更画面</h1>
+	</div>
+  <div class="row">
+    <div class="col-md-11">
+      <h2><%= "#{score(@game)} - #{@game.enemy_score}" %></h2>
       <%= form_with model: @game, url: admin_managers_game_path(@game) do |game_form| %>
-        <div class="field row">
-          <h4>失点数</h4>
-          <%= game_form.number_field :enemy_score, min:0, step:1, rows:'5', placeholder: "数字を入力" %>
-          <%= game_form.submit "変更する" , class: "btn btn-primary"%>
-        </div>
+        <%= game_form.label :失点数 %>
+        <%= game_form.number_field :enemy_score, min:0, step:1, rows:'5', placeholder: "数字を入力",class: "col-md-1" %>
+        <%= game_form.submit "変更" , class: "btn btn-primary"%>
       <% end %>
       <table class="table table-bordered">
           <thead>
@@ -43,5 +43,6 @@
           </tbody>
       </table>
       <%= link_to "完了", admin_managers_games_path, class:"btn bg-primary" %>
+    </div>
   </div>
 </div>

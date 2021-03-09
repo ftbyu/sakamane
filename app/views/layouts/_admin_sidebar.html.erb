@@ -1,85 +1,55 @@
-<!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<li class="nav-item active">
+	<%= link_to admin_managers_path, class: "nav-link" do %>
+		<i class="fas fa-fw fa-tachometer-alt"></i>
+		<span>Manager</span>
+	<% end %>
+</li>
 
-    <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
-    </a>
+<!-- Divider -->
+<hr class="sidebar-divider">
 
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
-
-    <!-- Nav Item - Dashboard -->
-    <% if manager_signed_in? %>
-        <li class="nav-item active">
-            <a class="nav-link" href="index.html">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Manager</span></a>
-        </li>
-    <% elsif player_signed_in? %>
-        <li class="nav-item active">
-            <a class="nav-link" href="index.html">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Player</span></a>
-        </li>
-    <% else %>
-        <li class="nav-item active">
-            <a class="nav-link" href="index.html">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Guest</span></a>
-        </li>
-    <% end %>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        
-    </div>
+<!-- Heading -->
+<div class="sidebar-heading">
+		
+</div>
 
 
-    <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Games</span></a>
-    </li>
+<!-- Nav Item - Charts -->
+<li class="nav-item">
+	<%= link_to admin_managers_games_path, class: "nav-link" do %>
+		<i class="fas fa-fw fa-chart-area"></i>
+		<span>Games</span>
+	<% end %>
+</li>
 
-    <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Team Menbers</span></a>
-    </li>
-    
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Setting</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Setting:</h6>
-                <a class="collapse-item" href="buttons.html">Payment</a>
-                <a class="collapse-item" href="cards.html">Logout</a>
-            </div>
-        </div>
-    </li>
+<!-- Nav Item - Tables -->
+<li class="nav-item">
+	<%= link_to admin_managers_players_path, class: "nav-link" do %>
+    <i class="fas fa-fw fa-users"></i>
+		<span>Team Menbers</span>
+	<% end %>
+</li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+<!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item">
+		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+				aria-expanded="true" aria-controls="collapseTwo">
+				<i class="fas fa-fw fa-cog"></i>
+				<span>Setting</span>
+		</a>
+		<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+				<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Custom Setting:</h6>
+						<a class="collapse-item" href="#">Payment</a>
+						<%= link_to "Logout", destroy_manager_session_path, class: "collapse-item", method: :delete %>
+				</div>
+		</div>
+</li>
 
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-    </div>
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
 
-
-</ul>
-<!-- End of Sidebar -->
+<!-- Sidebar Toggler (Sidebar) -->
+<div class="text-center d-none d-md-inline">
+		<button class="rounded-circle border-0" id="sidebarToggle"></button>
+</div>

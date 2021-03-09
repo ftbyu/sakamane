@@ -40,8 +40,9 @@ class Admin::GamesController < ApplicationController
     #試合を作成
     game = Game.new(game_params)
     game.manager_id = current_manager.id
-    game.enemy_name = params[:enemy_name]
-    game.type_id = params[:type_id]
+    game.enemy_name = params[:game][:enemy_name]
+    game.type_id = params[:game][:type_id]
+    game.location_id = params[:game][:location_id]
     game.save!
 
     current_manager.players.each do |player|
