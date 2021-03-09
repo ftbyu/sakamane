@@ -21,6 +21,7 @@ class Admin::GamesController < ApplicationController
 
   def new
     @game = Game.new
+    @players = current_manager.players
   end
 
   def score
@@ -45,10 +46,10 @@ class Admin::GamesController < ApplicationController
     game.location_id = params[:game][:location_id]
     game.save!
 
-    current_manager.players.each do |player|
+    params[:game][:player_id].each do |player_id|
       #個人成績を作成
       achivement = game.achivements.new
-      achivement.player_id = player.id
+      achivement.player_id = player_id
       achivement.save!
 
       #個人成績に紐ずく分析記録を作成
@@ -78,6 +79,6 @@ class Admin::GamesController < ApplicationController
 	
 	private
 	def game_params
-    params.require(:game).permit(:enemy_score, :enemy_name, :location_id, :type_id)
+    params.require(:game).permit(:enemy_score, :enemy_name, :location_id, :type_id, :player_id)
   end
 end

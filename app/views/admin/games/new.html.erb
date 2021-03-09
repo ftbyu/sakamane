@@ -12,6 +12,14 @@
 				<%= f.label :試合タイプ , class: 'col-md-3' %>
         <%= f.collection_select :type_id, Type.all, :id, :name , include_blank: "-- 選択して下さい --" , class: 'col-md-9' %>
 			</div>
+			<div class="field">
+				<% @players.each do |player| %>
+				<label>
+					<%= f.check_box  :player_id, {multiple: true}, player.id, nil %>
+					<%= player.last_name + player.first_name %>
+				</label>
+				<% end %>
+			</div>
       <%= f.submit '試合記録画面へ進む', class: "btn bg-primary" %>
     </div>
 <% end %>
