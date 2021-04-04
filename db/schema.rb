@@ -15,7 +15,8 @@ ActiveRecord::Schema.define(version: 2021_02_08_150925) do
   create_table "achivements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "player_id", comment: "外部キー　選手"
     t.integer "game_id", comment: "外部キー　試合"
-    t.string "comment", comment: "コメント"
+    t.string "player_comment", comment: "選手コメント"
+    t.string "manager_comment", comment: "マネージャーコメント"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
