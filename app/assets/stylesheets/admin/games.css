@@ -1,0 +1,16 @@
+@media screen and (min-width: 768px) {
+  /* PC */
+  input[type="number"] {
+    width: 100%;
+    height: 2em;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* SP */
+  input[type="number"] {
+    width: 100%;
+    height: 2em;
+  }
+}
+/*# sourceMappingURL=games.css.map */

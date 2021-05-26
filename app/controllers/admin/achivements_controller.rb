@@ -2,10 +2,13 @@ class Admin::AchivementsController < ApplicationController
 
   def show
     @achivement = Achivement.find_by(game_id: params[:game_id],player_id: params[:player_id])
+    @game = Game.find(params[:game_id])
   end
 
   def edit
-    @achivement = Achivement.includes(:results).find(params[:id])
+    # @achivement = Achivement.includes(:results).find(params[:id])
+    @achivement = Achivement.find_by(game_id: params[:game_id],player_id: params[:player_id])
+    @game = Game.find(params[:game_id])
   end
 
   def update
@@ -19,7 +22,7 @@ class Admin::AchivementsController < ApplicationController
 
   private
   def achivement_params
-    params.require(:achivement).permit(:comment)
+    params.require(:achivement).permit(:player_comment,:manager_comment)
   end
   def results_params
     params.require(:achivement).permit(results: :amount)[:results]

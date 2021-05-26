@@ -24,6 +24,10 @@
 </div>
 <div class="row">
   <h3>監督コメント</h3><br/>
-  <%= @achivement.manager_comment %>
-  <%= link_to "edit", edit_admin_managers_game_player_achivements_path(@game,@achivement.player_id), class:"btn-sm btn-outline-success" %>
+  <div class="col-md-9">
+    <%= form_with(model: @achivement, url: admin_managers_game_player_achivements_path(@game,@achivement), method: :patch) do |achivement_form| %>
+        <%= achivement_form.text_area :manager_comment, class: '', style: "resize: both;", placeholder:"監督のコメントを入力" %>
+        <%= achivement_form.submit '投稿', class: "btn bg-primary" %>
+    <% end %>
+  </div>
 </div>

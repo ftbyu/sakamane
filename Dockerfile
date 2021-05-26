@@ -25,4 +25,6 @@ ADD package.json package.json
 ADD yarn.lock yarn.lock
 RUN yarn install
 
+CMD /bin/sh -c "rm -f /myapp/tmp/pids/server.pid && bundle exec rails s -p $PORT -b '0.0.0.0'"
+
 COPY . .
